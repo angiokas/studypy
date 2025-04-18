@@ -1,0 +1,37 @@
+[project]
+name = "studypy"
+version = "0.1.0"
+description = "A Python app for studying, with both a TUI and an interactive REPL shell interface."
+readme = "README.md"
+authors = [
+    { name = "Annie Giokas", email = "angiokas@pm.me" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "prompt-toolkit>=3.0.51",
+    "studypy-core",
+    "studypy-repl",
+    "studypy-tui",
+]
+
+[project.scripts]
+studypy_tui = "studypy_tui.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[tool.uv.sources]
+studypy-core = { workspace = true }
+studypy-tui = { workspace = true }
+studypy-repl = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "isort>=6.0.1",
+    "pytest>=8.3.5",
+]
